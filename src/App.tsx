@@ -18,15 +18,17 @@ function App() {
   const [todoInput, setTodoInput] = useState("");
 
   const handleCreateTask = () => {
-    const newTodoItem = {
-      id: todoItems.length + 1,
-      title: todoInput,
-      isCompleted: false,
-    };
+    if (todoInput.length > 0) {
+      const newTodoItem = {
+        id: todoItems.length + 1,
+        title: todoInput,
+        isCompleted: false,
+      };
 
-    const updatedTodoItems = [...todoItems, newTodoItem];
-    setTodoItems(updatedTodoItems);
-    setTodoInput("");
+      const updatedTodoItems = [...todoItems, newTodoItem];
+      setTodoItems(updatedTodoItems);
+      setTodoInput("");
+    }
   };
 
   const handleFinishTask = (id: number) => {
