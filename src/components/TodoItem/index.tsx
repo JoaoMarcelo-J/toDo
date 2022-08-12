@@ -24,9 +24,9 @@ export default function TodoItem({
         </label>
         <S.TodoText completed={checked}>{title}</S.TodoText>
       </S.CheckBoxContainer>
-      <div onClick={onDelete}>
+      <S.ButtonWrapper onClick={onDelete}>
         <BsTrash />
-      </div>
+      </S.ButtonWrapper>
     </S.TodoItemContainer>
   );
 }

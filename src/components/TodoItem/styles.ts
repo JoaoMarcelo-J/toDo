@@ -54,11 +54,22 @@ export const CheckBoxContainer = styled.div`
     border-radius: 999px;
     background-color: var(--gray-500);
     border: 2px solid var(--brand-blue);
+
+    transition: all 0.2s;
+
+    &:hover {
+      background-color: var(--brand-blue-dark);
+    }
   }
 
   input:checked[type="checkbox"] {
     background-color: var(--brand-purple-dark);
     border: 2px solid var(--brand-purple-dark);
+
+    &:hover {
+      background-color: var(--brand-purple);
+      border: 2px solid var(--brand-purple);
+    }
 
     & ~ svg {
       display: block;
@@ -66,6 +77,19 @@ export const CheckBoxContainer = styled.div`
       position: absolute;
       top: 4px;
       right: 4px;
+    }
+  }
+`;
+
+export const ButtonWrapper = styled.div`
+  padding: 4px;
+  border-radius: 8px;
+
+  &:hover {
+    background-color: var(--gray-400);
+
+    svg {
+      color: var(--danger);
     }
   }
 `;

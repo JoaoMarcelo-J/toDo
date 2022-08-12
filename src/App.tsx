@@ -3,6 +3,7 @@ import Button from "./components/Button";
 import { Header } from "./components/Header";
 import { TodoInputContainer } from "./components/TodoInput/styles";
 import TodoItem from "./components/TodoItem";
+import ClipBoard from "./assets/clipboard.svg";
 import * as S from "./styles/home";
 
 type TodoItemType = {
@@ -82,15 +83,25 @@ function App() {
           </strong>
         </S.TodosHeader>
         <S.TodoContainer>
-          {todoItems.map((todoItem) => (
-            <TodoItem
-              key={todoItem.id}
-              onChange={() => handleFinishTask(todoItem.id)}
-              onDelete={() => handleDeleteTask(todoItem.id)}
-              checked={todoItem.isCompleted}
-              title={todoItem.title}
-            />
-          ))}
+          {todoItems.length === 0 ? (
+            <S.notTodo>
+              <img src={ClipBoard} alt="clipboard" />
+              <p>
+                <strong>Você ainda não tem tarefas cadastradas</strong> <br />
+                Crie tarefas e organize seus itens a fazer
+              </p>
+            </S.notTodo>
+          ) : (
+            todoItems.map((todoItem) => (
+              <TodoItem
+                key={todoItem.id}
+                onChange={() => handleFinishTask(todoItem.id)}
+                onDelete={() => handleDeleteTask(todoItem.id)}
+                checked={todoItem.isCompleted}
+                title={todoItem.title}
+              />
+            ))
+          )}
         </S.TodoContainer>
       </S.Wrapper>
     </S.HomeContainer>

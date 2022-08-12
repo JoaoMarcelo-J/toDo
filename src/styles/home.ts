@@ -62,3 +62,18 @@ export const TodosHeader = styled.header`
     color: white;
   }
 `;
+
+export const notTodo = styled.div`
+  display: flex;
+  margin-top: 68px;
+  font-size: 1.2rem;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: var(--gray-300);
+
+  strong {
+    font-weight: bold;
+  }
+`;
