@@ -14,10 +14,23 @@ type TodoItemType = {
 };
 
 function App() {
-  const [todoItems, setTodoItems] = useState<TodoItemType[]>([]);
+  const [todoItems, setTodoItems] = useState<TodoItemType[]>(
+    localStorage.getItem("todoItems")
+      ? JSON.parse(localStorage.getItem("todoItems")!)
+      : []
+  );
   const [priority, setPriority] = useState("");
   const [completedItems, setCompletedItems] = useState<TodoItemType[]>([]);
   const [todoInput, setTodoInput] = useState("");
+
+  const saveToLocalStorage = (items: TodoItemType[]) => {
+    localStorage.setItem("todoItems", JSON.stringify(items));
+  };
+
+  const deleteToLocalStorages = (items: TodoItemType[]) => {
+    localStorage.removeItem("todoItems");
+    localStorage.setItem("todoItems", JSON.stringify(items));
+  };
 
   const handleCreateTask = () => {
     if (todoInput.length > 0) {
@@ -35,6 +48,7 @@ function App() {
 
       const updatedTodoItems = [...todoItems, newTodoItem];
       setTodoItems(updatedTodoItems);
+      saveToLocalStorage(updatedTodoItems);
       setTodoInput("");
     }
   };
@@ -64,6 +78,8 @@ function App() {
 
     const completedTodoItem = completedItems.filter((item) => item.id !== id);
     setCompletedItems(completedTodoItem);
+
+    deleteToLocalStorages(updatedTodoItems);
   };
 
   return (
