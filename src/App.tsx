@@ -1,10 +1,16 @@
 import { useState } from "react";
+
+//Componets
 import Button from "./components/Button";
 import { Header } from "./components/Header";
-import { TodoInputContainer } from "./components/TodoInput/styles";
 import TodoItem from "./components/TodoItem";
-import ClipBoard from "./assets/clipboard.svg";
+
+//Styles
+import { TodoInputContainer } from "./components/TodoInput/styles";
 import * as S from "./styles/home";
+
+//Images
+import ClipBoard from "./assets/clipboard.svg";
 
 type TodoItemType = {
   id: number;

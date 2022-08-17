@@ -1,11 +1,17 @@
+import { useState } from "react";
+
+//Components
+import Modal from "react-modal";
+
+//Styles
 import * as S from "./styles";
 import { customStyles } from "./styles";
-import { BsTrash } from "react-icons/bs";
+
+//Images
 import { HiOutlinePencil } from "react-icons/hi";
 import { AiOutlineCheck } from "react-icons/ai";
-import Modal from "react-modal";
 import { AiOutlineClose } from "react-icons/Ai";
-import { useState } from "react";
+import { BsTrash } from "react-icons/bs";
 
 interface TodoItemProps {
   checked: boolean;

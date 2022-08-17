@@ -1,4 +1,7 @@
+//Styles
 import * as S from "./styles";
+
+//Images
 import { BsPlusCircle } from "react-icons/bs";
 
 interface ButtonProps {
