@@ -10,10 +10,12 @@ type TodoItemType = {
   id: number;
   title: string;
   isCompleted: boolean;
+  priority: string;
 };
 
 function App() {
   const [todoItems, setTodoItems] = useState<TodoItemType[]>([]);
+  const [priority, setPriority] = useState("");
   const [completedItems, setCompletedItems] = useState<TodoItemType[]>([]);
   const [todoInput, setTodoInput] = useState("");
 
@@ -23,7 +25,13 @@ function App() {
         id: todoItems.length + 1,
         title: todoInput,
         isCompleted: false,
+        priority,
       };
+
+      if (!priority) {
+        alert("Selecione uma prioridade para a tarefa");
+        return;
+      }
 
       const updatedTodoItems = [...todoItems, newTodoItem];
       setTodoItems(updatedTodoItems);
@@ -71,6 +79,15 @@ function App() {
               onChange={(ev) => setTodoInput(ev.target.value)}
             />
           </TodoInputContainer>
+          <select
+            value={priority}
+            onChange={(ev) => setPriority(ev.target.value)}
+          >
+            <option value="">Prioridade</option>
+            <option value="1">Alta</option>
+            <option value="2">Baixa</option>
+            <option value="3">Média</option>
+          </select>
           <Button onClick={handleCreateTask} />
         </S.InputsContainer>
         <S.TodosHeader>
@@ -78,7 +95,7 @@ function App() {
             Trefas criadas <h4>{todoItems.length}</h4>
           </span>
           <strong>
-            Concluídas{" "}
+            Concluídas
             <h4>
               {completedItems.length} de {todoItems.length}
             </h4>
@@ -101,6 +118,7 @@ function App() {
                 onDelete={() => handleDeleteTask(todoItem.id)}
                 checked={todoItem.isCompleted}
                 title={todoItem.title}
+                priority={todoItem.priority}
               />
             ))
           )}

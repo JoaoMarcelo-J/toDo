@@ -11,6 +11,7 @@ export const TodoItemContainer = styled.section`
   border-radius: 8px;
 
   p {
+    align-self: center;
     max-width: 630px;
   }
 
@@ -47,6 +48,7 @@ export const CheckBoxContainer = styled.div`
 
   input[type="checkbox"] {
     position: relative;
+    margin-bottom: -5px;
     width: 20px;
     height: 20px;
     outline: none;
@@ -78,6 +80,39 @@ export const CheckBoxContainer = styled.div`
       top: 4px;
       right: 4px;
     }
+  }
+`;
+
+export const PriorityContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 20px;
+`;
+
+const PRIORITY_COLORS = {
+  yellow: "yellow-500",
+  green: "green-500",
+  red: "red-500",
+} as const;
+
+interface PriorityProps {
+  priority: keyof typeof PRIORITY_COLORS;
+}
+
+export const PriorityText = styled.p<PriorityProps>`
+  font-size: 1rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  &::after {
+    content: "";
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background-color: ${(props) =>
+      props.priority ? `var(--${PRIORITY_COLORS[props.priority]})` : ""};
   }
 `;
 
