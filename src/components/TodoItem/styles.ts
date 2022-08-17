@@ -119,7 +119,9 @@ export const PriorityText = styled.p<PriorityProps>`
 export const ButtonWrapper = styled.div`
   padding: 4px;
   border-radius: 8px;
+`;
 
+export const DeleteWrapper = styled(ButtonWrapper)`
   &:hover {
     background-color: var(--gray-400);
 
@@ -128,3 +130,83 @@ export const ButtonWrapper = styled.div`
     }
   }
 `;
+
+export const EditWrapper = styled(ButtonWrapper)`
+  &:hover {
+    background-color: var(--gray-400);
+
+    svg {
+      color: var(--brand-blue);
+    }
+  }
+`;
+
+export const ModalWrapper = styled.div`
+  display: flex;
+  height: 100%;
+  align-items: center;
+  color: white;
+  position: relative;
+
+  svg {
+    color: var(--gray-200);
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    &:hover {
+      transform: scale(1.4);
+    }
+  }
+`;
+
+export const InputsModalContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  gap: 20px;
+
+  button {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    background-color: var(--brand-blue);
+    color: var(--gray-100);
+  }
+
+  input {
+    background-color: var(--gray-400);
+    border: none;
+    padding: 8px 20px;
+    border-radius: 8px;
+    color: var(--gray-100);
+  }
+`;
+
+export const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    border: "1px solid #ccc",
+    background: "var(--gray-500)",
+    borderRadius: "4px",
+    outline: "none",
+    padding: "1rem",
+    height: "220px",
+    width: "450 px",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+  },
+  overlay: {
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: "rgba(31, 31, 31, 0.75)",
+  },
+};

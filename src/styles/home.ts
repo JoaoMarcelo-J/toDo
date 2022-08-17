@@ -40,6 +40,24 @@ export const TodosHeader = styled.header`
   width: 100%;
   justify-content: space-between;
 
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+
+  input {
+    background-color: var(--gray-400);
+    border: none;
+    padding: 8px 20px;
+    border-radius: 8px;
+    color: var(--gray-100);
+
+    @media (max-width: 768px) {
+      width: 200px;
+    }
+  }
+
   span {
     display: flex;
     align-items: center;

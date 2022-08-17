@@ -22,7 +22,8 @@ function App() {
   const [priority, setPriority] = useState("");
   const [completedItems, setCompletedItems] = useState<TodoItemType[]>([]);
   const [todoInput, setTodoInput] = useState("");
-
+  const [editInput, setEditInput] = useState("");
+  const [todoTitleFilter, setTodoTitleFilter] = useState("");
   const saveToLocalStorage = (items: TodoItemType[]) => {
     localStorage.setItem("todoItems", JSON.stringify(items));
   };
@@ -82,6 +83,39 @@ function App() {
     deleteToLocalStorages(updatedTodoItems);
   };
 
+  const handleEditTask = (id: number) => {
+    const updatedTodoItems = todoItems.map((todoItem) => {
+      if (todoItem.id === id) {
+        todoItem.title = editInput;
+      }
+      return todoItem;
+    });
+
+    setTodoItems(updatedTodoItems);
+    saveToLocalStorage(updatedTodoItems);
+  };
+
+  const editTaskInput = (ev: React.ChangeEvent<HTMLInputElement>) => {
+    setEditInput(ev.target.value);
+  };
+
+  const handleFilter = (ev: React.ChangeEvent<HTMLInputElement>) => {
+    setTodoTitleFilter(ev.target.value);
+
+    const filteredTodoItems = todoItems.filter((todoItem) =>
+      todoItem.title.toLowerCase().includes(ev.target.value.toLowerCase())
+    );
+
+    setTodoItems(filteredTodoItems);
+
+    if (ev.target.value === "") {
+      const todoItems = localStorage.getItem("todoItems")
+        ? JSON.parse(localStorage.getItem("todoItems")!)
+        : [];
+      setTodoItems(todoItems);
+    }
+  };
+
   return (
     <S.HomeContainer>
       <Header />
@@ -110,6 +144,14 @@ function App() {
           <span>
             Trefas criadas <h4>{todoItems.length}</h4>
           </span>
+
+          <input
+            type="text"
+            placeholder="Digite o nome da busca"
+            value={todoTitleFilter}
+            onChange={handleFilter}
+          />
+
           <strong>
             Concluídas
             <h4>
@@ -132,9 +174,11 @@ function App() {
                 key={todoItem.id}
                 onChange={() => handleFinishTask(todoItem.id)}
                 onDelete={() => handleDeleteTask(todoItem.id)}
+                onEdit={() => handleEditTask(todoItem.id)}
                 checked={todoItem.isCompleted}
                 title={todoItem.title}
                 priority={todoItem.priority}
+                editTaskInput={editTaskInput}
               />
             ))
           )}
