@@ -18,6 +18,13 @@ export const InputsContainer = styled.div`
   gap: 8px;
 
   transform: translateY(-35%);
+
+  select {
+    font-size: 14px;
+    border-radius: 8px;
+    color: var(--gray-200);
+    background-color: var(--gray-400);
+  }
 `;
 
 export const TodoContainer = styled.div`
