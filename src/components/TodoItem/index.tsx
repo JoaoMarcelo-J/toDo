@@ -9,8 +9,7 @@ import { customStyles } from "./styles";
 
 //Images
 import { HiOutlinePencil } from "react-icons/hi";
-import { AiOutlineCheck } from "react-icons/ai";
-import { AiOutlineClose } from "react-icons/Ai";
+import { AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
 import { BsTrash } from "react-icons/bs";
 
 interface TodoItemProps {
